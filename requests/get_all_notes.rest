@@ -1,7 +1,7 @@
-POST  http://localhost:3001/api/notes 
+POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "content": "heeheehee haw !!",
-    "important": true
+    "name": "alskd jain",
+    "number": "102941029"
 }
