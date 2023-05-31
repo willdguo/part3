@@ -6,6 +6,8 @@ app.use(express.json())
 const cors = require('cors')
 app.use(cors())
 
+app.use(express.static('build'))
+
 let morgan = require('morgan')
 let temp = morgan((tokens, request, response) => {
 
