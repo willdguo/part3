@@ -118,13 +118,8 @@ app.post('/api/persons', (request, response, next) => {
           number: body.number,
         }
         
-        //console.log(`round 2 ${result[0].name}`)
-
         Person.findByIdAndUpdate(oldPerson._id, newPerson, {new: true})
           .then(updatedPerson => {
-
-            //console.log(`round 3 ${result}`)
-
 
             response.json(updatedPerson)
             console.log("updated person")
@@ -142,7 +137,7 @@ app.post('/api/persons', (request, response, next) => {
     
         newPerson.save().then(person => {
           response.json(person)
-        })
+        }).catch(error => next(error))
 
       }
 

@@ -3,7 +3,6 @@ mongoose.set('strictQuery', false)
 
 
 const url = 
-    //`mongodb+srv://willdguo-fso:ZerothApp1_@fullstackopen-part3.wv7msos.mongodb.net/phonebook?retryWrites=true&w=majority`
     process.env.MONGODB_URI
 console.log(`connecting to ${url}`)
 
@@ -17,8 +16,21 @@ mongoose.connect(url)
 
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    minLength: 3,
+    required: true,
+  },
+  number: {
+    type: String,
+    minLength: 8,
+    validate: {
+      validator: function(v) {
+        const arry = v.split('-')
+        return (arry[0] > 1 && arry.length > 1)
+      }
+    }
+  }
 })
 
 
